@@ -176,6 +176,10 @@ PrefabInstance:
       value: Elvis Happy Idle
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cff0a3927d2ee3b45babb47a4bd88feb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 91f63700f6254fe4095899a5f31fb1c3, type: 2}
+    - target: {fileID: 5866666021909216657, guid: cff0a3927d2ee3b45babb47a4bd88feb, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -534,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340462766}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.000000018722702, z: 0.00000000441983, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 0.000000018722702, z: -0.00000000441983, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -639,7 +643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695541081}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.000000018722702, z: 0.00000000441983, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 0.000000018722702, z: -0.00000000441983, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -788,6 +792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4535ad0a22635479192cafaab23826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 5
+  speed: 2
 --- !u!114 &1833605145
 MonoBehaviour:
   m_ObjectHideFlags: 0
