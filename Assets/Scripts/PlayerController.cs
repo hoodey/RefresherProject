@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Animator animator;
     Rigidbody rb;
-    PlayerInput input;
+    Vector2 input;
     [SerializeField] float jumpForce;
     [SerializeField] float speed;
 
@@ -17,19 +17,56 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponentInChildren<Rigidbody>();
-        input = GetComponentInChildren<PlayerInput>();
+    }
+
+    private void OnEnable()
+    {
+        InputManager.controls.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        input = InputManager.controls.Human.Movement.ReadValue<Vector2>();
+        
+        animator.SetFloat("Speed", input.magnitude);
+
         
     }
 
-    public void OnMovement()
+    private void FixedUpdate()
     {
-        
+        var newInput = GetCameraBasedInput(input, Camera.main);
+
+        var newVelocity = new Vector3(newInput.x * speed, rb.velocity.y, newInput.z * speed);
+
+        rb.velocity = newVelocity;
+
+        if (newVelocity != Vector3.zero)
+        {
+            RotatePlayerModel(newVelocity);
+        }
     }
+
+    Vector3 GetCameraBasedInput(Vector2 input, Camera cam)
+    {
+        Vector3 camRight = cam.transform.right;
+        camRight.y = 0;
+        camRight.Normalize();
+
+        Vector3 camForward = cam.transform.forward;
+        camForward.y = 0;
+        camForward.Normalize();
+
+        return input.x * camRight + input.y * camForward;
+    }
+
+    private void RotatePlayerModel(Vector3 dir)
+    {
+        dir.y = 0;
+        animator.transform.forward = dir;
+    }
+
 
     public void OnJump()
     {
