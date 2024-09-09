@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Vector2 input;
     [SerializeField] float jumpForce;
     [SerializeField] float speed;
+    [SerializeField] Stats currentHealth;
+    [SerializeField] Stats maxHealth;
 
 
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponentInChildren<Rigidbody>();
+        currentHealth.amount = maxHealth.amount;
     }
 
     private void OnEnable()
