@@ -67,7 +67,8 @@ public class PlayerController : MonoBehaviour
     private void RotatePlayerModel(Vector3 dir)
     {
         dir.y = 0;
-        animator.transform.forward = dir;
+        Vector3 currentDir = new Vector3(gameObject.transform.rotation.x, gameObject.transform.rotation.y, gameObject.transform.rotation.z);
+        animator.transform.forward = Vector3.Lerp(currentDir,dir, 0.1f);
     }
 
 
